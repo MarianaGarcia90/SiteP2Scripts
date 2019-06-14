@@ -1,0 +1,131 @@
+/*GRID*/
+
+.caixa {
+    float: left;
+    width: 100%;
+    margin: 0.5%;
+}
+
+.caixa1 {
+    width: 7.33333%;     /*Considerar 5 casas 100/12*1 = 8.33333333 100% divido pelo número total de colunas x o número que deseja - 1 por causa da margem, no caso 1 12 casas com essa largura*/
+}
+
+.caixa2 {
+    width: 15.66666%;
+}
+
+.caixa3 {
+    width: 24%;
+}
+
+.caixa4 {
+    width: 32.33333%;
+}
+
+.caixa5 {
+    width: 40,66666%;
+}
+
+.caixa6 {
+    width: 49%;
+}
+
+.caixa10 {
+    width: 82.33333%;
+}
+
+.caixa12 {
+    width: 99%;
+}
+
+@media screen and (max-width: 960px) {
+
+    .conteudo {
+        width: 95%;
+    }
+
+    .menu {
+        width: 50%;
+    }
+
+    .menu li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .caixa3 {
+        width: 48%;
+        min-height: 370px;
+    }
+
+    .caixa4 {
+        width: 100%;
+        min-height: 370px;
+    }
+
+    .caixa6 {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 680px) {
+
+    .logo {
+        float: none;
+        width: 30%;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .caixa6 {
+        width: 100%;
+    }
+   
+}
+    
+@media screen and (max-width: 480px) {
+
+    .conteudo {
+        width: 100%;
+    }
+
+    .logo {
+        margin-left: 0;
+        width: 50%;
+        height: 50%;
+    }
+
+    .menu li {
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+    }
+
+
+    form {
+        width: 96%;
+    }
+
+    .tituloDestaque {
+        font-size: 1.5em;
+    }
+
+    .titulo {
+        font-size: 1em;
+    }
+
+    .caixa3 {
+        width: 100%;
+    }
+
+    .caixa4 {
+        width: 100%;
+    }
+
+    .caixa6 {
+        width: 100%;
+    }
+
+}
+

@@ -1,0 +1,22 @@
+.listaIndicados li{
+    line-height: 60px;
+    list-style: none;
+    font-style: italic;
+    border-bottom: 1px #eee solid;
+    text-align: left;
+}
+
+.listaIndicados p{
+    text-align: left;
+}
+
+.listaIndicados img {
+    float: left;
+    width: 150px;
+    height: 90px;
+    margin: 5px;
+}
+
+.listaIndicados a:hover { /*quando passa o mouse*/
+    color: #ccc;
+}
