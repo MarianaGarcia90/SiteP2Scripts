@@ -1,3 +1,48 @@
+//Formatando data ex: 20 de janeiro de 2019"      
+function renderDataAtual() {
+	const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+		"julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+	const date = new Date();
+	let data = "Jundiaí, " + date.getDate() + " de " + month[date.getMonth()]
+		+ " de " + date.getFullYear();
+	document.write(data)
+}
+
+// Converte valores dos check e radios
+function formatCurrency(num) {
+	num = num.toString().replace(/\$|\,/g, '');
+	if (isNaN(num)) num = "0";
+	cents = Math.floor((num * 100 + 0.5) % 100);
+	num = Math.floor((num * 100 + 0.5) / 100).toString();
+	if (cents < 10) cents = "0" + cents;
+	for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+		num = num.substring(0, num.length - (4 * i + 3)) + '.' + num.substring(num.length - (4 * i + 3));
+	return ("" + num + "," + cents);
+}
+
+// Somar valores bolos
+try {
+	const form = document.forms[0];
+	const inputs = form.querySelectorAll('input[type=checkbox],input[type=radio]');
+	// iterar todos os inputs
+	for (let i = 0; i < inputs.length; i++) {
+		// vincular função ao evento "change"
+		inputs[i].addEventListener('change', function () {
+			let soma = 0;
+			for (let j = 0; j < inputs.length; j++) {
+				if (inputs[j].checked) {
+					// interpreta como float, usando parseFloat ao invés de eval
+					soma += parseFloat(inputs[j].value);
+				}
+			}
+			form.hiddentotal.value = soma; // atribui valor ao campo oculto
+			form.total.value = formatCurrency(soma) // exibe valor formatado
+		}, false);
+	}
+} catch (error) { }
+
+
+
 // Função utilizada na pag ConheçaPeçaSabores.html
 function renderSaboresBolos(i) {
 	let content = document.getElementById("content");
@@ -155,9 +200,9 @@ function renderModelosBolos(i) {
 // Função utilizada em todas as páginas
 // Evita a necessidade de escrever múltiplas vezes o mesmo conteúdo
 function renderFooter() {
-	let footer = document.getElementsByTagName("footer");
-	if (footer[0] != null) {
-		footer[0].innerHTML = `
+	let footer = document.getElementsByTagName("footer")[0];
+	if (footer != null) {
+		footer.innerHTML = `
 				<div class="conteudo ">
 					<p>&copy; 2019 - Mari's Wedding Cake - Seu bolo com carinho</p>
 					<ul class="social">
