@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mari's Wedding Cake - Compre seu bolo de casamento</title>
-
+    <link rel="stylesheet" href="css/popup.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/grid.css">
 
@@ -32,7 +32,8 @@
     <section class="corpo limpa">
         <div class="conteudo">
             <h1 class="tituloDestaque">Comprando seu Bolo</h1>
-            <p>Todos os preços do site são para bolos de 12kg (serve 120 pessoas). Para pedidos especiais fale conosco.</p>
+            <p>Todos os preços do site são para bolos de 12kg (serve 120 pessoas). Para pedidos especiais fale conosco.
+            </p>
             <p>Lembrando que a retirada dos bolos é de responsabilidade do cliente.</p>
         </div>
     </section>
@@ -40,14 +41,17 @@
     <section class="limpa">
         <div class="conteudo">
 
-            <form class="caixa caixa12 bordas sombras" id="pedido" action="" name="pedido" onsubmit="return enviarFormularioComprar(this)">
+            <form class="caixa caixa12 bordas sombras" id="pedido" action="" name="pedido"
+                onsubmit="return enviarFormularioComprar(this)">
 
                 <p><label for="sabor" class="titulo">Sabores</label></p>
-                <p class="textoVerde"><input type="checkbox" name="sabor" value="816" />Chocolate Clássico - R$816,00</p>
+                <p class="textoVerde"><input type="checkbox" name="sabor" value="816" />Chocolate Clássico - R$816,00
+                </p>
 
                 <p class="textoVerde"><input type="checkbox" name="sabor" value="816" />Morango Clássico - R$816,00</p>
 
-                <p class="textoVerde"><input type="checkbox" name="sabor" value="840" />Novidade de Churros - R$840,00</p>
+                <p class="textoVerde"><input type="checkbox" name="sabor" value="840" />Novidade de Churros - R$840,00
+                </p>
 
                 <p class="textoVerde"><input type="checkbox" name="sabor" value="696" />Mousse de Limão - R$696,00</p>
 
@@ -59,9 +63,11 @@
                 <p class="textoVerde"><input type="checkbox" name="sabor" value="900" />Mousse de Leite Ninho -
                     R$900,00</p>
 
-                <p class="textoVerde"><input type="checkbox" name="sabor" value="840" />Delícia de Prestígio - R$840,00</p>
+                <p class="textoVerde"><input type="checkbox" name="sabor" value="840" />Delícia de Prestígio - R$840,00
+                </p>
 
-                <p class="textoVerde"><input type="checkbox" name="sabor" value="984" />Nutela com Castanhas - R$984,00</p>
+                <p class="textoVerde"><input type="checkbox" name="sabor" value="984" />Nutela com Castanhas - R$984,00
+                </p>
 
                 <p class="textoVerde"><input type="checkbox" name="sabor" value="900" />Delícia de Oreo - R$900,00</p>
 
@@ -103,7 +109,8 @@
                     </select></p>
 
                 <div id="hiddenDiv" style="visibility:hidden">
-                    <p><input type="text" name="valor" id="valor" placeholder="Valor a ser pago" maxlength="14" value=""></p>
+                    <p><input type="text" name="valor" id="valor" placeholder="Valor a ser pago" maxlength="14"
+                            value=""></p>
                 </div>
 
                 <div id="troco"></div>
@@ -114,13 +121,21 @@
                     <textarea name="mensagem" rows="5" placeholder="Mensagem"></textarea>
                 </p>
                 <input type="submit" id="envioPedido" value="Enviar Pedido" class="botao bordas">
+                <a id="myBtn" class="botao bordas">Ver Pedido</a>
             </form>
         </div>
-        
+        <div id="popup">
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                </div>
+            </div>
+        </div>
     </section>
-
+    
     <footer></footer>
-
+    
+    <script src="js/popup.js"></script>
     <script src="js/render.js"></script>
     <script src="js/validacoes.js"></script>
 </body>
