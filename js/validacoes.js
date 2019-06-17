@@ -95,8 +95,6 @@ function enviarFormularioComprar(formDados) {
 	return true;
 }
 
-
-
 /**
  * @param {form} formDados
  * @description Verifica se no mínimo um checkbox foi selecionado
@@ -136,17 +134,11 @@ function verificaPagamentoDinheiro(formDados) {
 			alert(error);
 			return true;
 		}
-		// Operador ternário
-		let valido = valor >= totalPagar ? true : false;
-		return valido;
-		/*
-			Mesma equivalência ao teste lógico superior
-			if (valorPagamento >= totalPagar) {
-				return false;
-			} else {
-				return true;
-			}
-		*/
+		if (valorPagamento >= totalPagar) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	return false;
 }
