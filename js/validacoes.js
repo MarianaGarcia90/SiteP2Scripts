@@ -1,14 +1,22 @@
-/* 
-	Arquivo faz 
+/*
+	Arquivo faz toda parte de validação dos formulários
+	possuindo assim também funções auxiliares
+
+	Funções Principais:
+	enviarFormularioIndex(formDados)
+	enviarFormularioComprar(formDados)
+
+	Funções Auxiliares:
+	verificaCheckBoxSabores(formDados) 
+	verificaPagamentoDinheiro(formDados)
 */
-
-
 
 /**
  * 
- * @param {form} formDados
- * @description Valida o formulário da página de Compras
- * @return bool - válido ou inválido
+ * @param {Object} formDados
+ * @description 
+ * Valida todos os campos do formulário da página de Index
+ * @return {Boolean} - válido ou inválido
  * @event onsubmit
  */
 function enviarFormularioIndex(formDados) {
@@ -35,10 +43,11 @@ function enviarFormularioIndex(formDados) {
 
 /**
  * 
- * @param {form} formDados
- * @description Envia e valida o formulário da página de Compras, verifica se 
+ * @param {Object} formDados
+ * @description 
+ * Envia e valida o formulário da página de Compras, verifica se 
  * todos os campos estão preenchidos corretamente e se as entradas são válidas
- * @return bool = válido : inválido
+ * @return {Boolean} - válido : inválido
  * @event onsubmit
  */
 function enviarFormularioComprar(formDados) {
@@ -91,14 +100,14 @@ function enviarFormularioComprar(formDados) {
 	}
 
 	alert("Dados OK");
-	renderInfoPedidoPopUp(formDados);
 	return true;
 }
 
 /**
- * @param {form} formDados
- * @description Verifica se no mínimo um checkbox foi selecionado
- * @returns bool = checked : not checked 
+ * @param {Object} formDados
+ * @description 
+ * Verifica se no mínimo um checkbox foi selecionado
+ * @returns {Boolean} = checked : not checked 
  */
 function verificaCheckBoxSabores(formDados) {
 	for (let i = 0; i < formDados.sabor.length; i++) {
@@ -112,11 +121,11 @@ function verificaCheckBoxSabores(formDados) {
 
 /**
  * 
- * @param {form} formDados
- * @description Verifica se o valor em dinheiro inserido é um maior ou igual preço
- * e faz o tratamento de erro caso receba letras
- * @returns bool = válido : inválido
- * 
+ * @param {Object} formDados
+ * @description 
+ * Verifica se o valor em dinheiro inserido é um maior ou igual preço.
+ * E checa se foi inserido letras.
+ * @returns {Boolean} = válido : inválido
  */
 function verificaPagamentoDinheiro(formDados) {
 	/* 
@@ -131,14 +140,10 @@ function verificaPagamentoDinheiro(formDados) {
 		try {
 			valorPagamento = parseFloat(formDados.valor.value);
 		} catch (error) {
-			alert(error);
 			return true;
 		}
-		if (valorPagamento >= totalPagar) {
-			return false;
-		} else {
-			return true;
-		}
+		// Operador Ternário
+		return (valorPagamento >= totalPagar) ? false : true;
 	}
 	return false;
 }

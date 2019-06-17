@@ -1,23 +1,47 @@
-/*
-    Arquivo responsável pelo popup
-    contém funções necessárias para exibir o popup 
-    e preenche-lo com as informações
-    Apenas utilizado na página: compras
-
-    Funções presentes:
-    parseURLParams(url)
-    returnDataAtual()
-    returnTroco()
-    renderInfoPedidoPopUp()
-    
-    Eventos:
-    onclick => para exibir e ocultar o popup
+/** 
+ * 
+ *  Arquivo responsável pelo popup contém funções necessárias para exibir o popup 
+ *  e preenche-lo com as informações. Apenas utilizado na página: compras
+ *
+ *  Funções presentes:
+ *  parseURLParams(url)
+ *  returnDataAtual()
+ *  returnTroco()
+ *  renderInfoPedidoPopUp()
+ *
+ *  Binding de Eventos:
+ *  onclick => para exibir e ocultar o popup
+ * 
 */
 
+/*
+    Atribuição de Eventos, para exibir ou ocultar o popup
+*/
 const modal = document.getElementById("myModal");
+const btn = document.getElementById("myBtn");
+const span = document.getElementsByClassName("close")[0];
 
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+span.onclick = function () {
+    modal.style.display = "none";
+}
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
-// Recebe os parâmetros da url
+/**
+ * 
+ * @param {String} url
+ * @description 
+ * Recebe uma url com parâmetros recidos após o preenchimento do formulário.
+ * E atribui os mesmo num objeto, atributos são preenchido de acordo
+ *  com os valores presentes na url.
+ * @returns {Object} com atributos contendo os valores dos parâmetros 
+ */
 function parseURLParams(url) {
     var queryStart = url.indexOf("?") + 1,
         queryEnd = url.indexOf("#") + 1 || url.length + 1,
@@ -38,16 +62,28 @@ function parseURLParams(url) {
     return parms;
 }
 
+/**
+ *
+ * @returns {string}: com data formatada
+ */
 function returnDataAtual() {
     const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
-        "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
     const date = new Date();
-    let data = "Jundiaí, " + date.getDate() + " de " + month[date.getMonth()]
+    const data = "Jundiaí, " + date.getDate() + " de " + month[date.getMonth()]
         + " de " + date.getFullYear();
     return data;
 }
 
-
+/**
+ * 
+ * @param {string} preco 
+ * @param {string} pago
+ * @description 
+ * Retorna diferença entre os parâmetros,
+ * tratando possíveis erros como vírgula ou ponto na String 
+ * @returns {float}
+ */
 function returnTroco(preco, pago) {
     try {
         pago = pago[0].replace(",",".");
@@ -57,13 +93,18 @@ function returnTroco(preco, pago) {
     return troco;
 }
 
+/**
+ * @description 
+ * Renderiza as informações do pedido no Pop up.
+ * Caso os valores forem nulos ou indefinidos,
+ * exibe que o pedido ainda não foi feito.
+ */
 function renderInfoPedidoPopUp() {
     const popupContent = document.querySelector(".modal-content");
     const info = parseURLParams(window.location.href);
-    console.log(info)
     
     if (info != undefined && info.email != "") {
-        let pedido = Math.floor(Math.random() * 10000);
+        const pedido = Math.floor(Math.random() * 10000);
         let conteudo = `<h4>Senhor(a) ${info.nome} seu pedido foi enviado com sucesso.</h4>
                         <p>Pedido: ${pedido}</p>
                         <p>Valor: R$${info.hiddentotal},00</p>`
@@ -79,28 +120,6 @@ function renderInfoPedidoPopUp() {
 
     } else {
         popupContent.innerHTML = `<h4>Pedido ainda não foi feito!</h4>`
-    }
-}
-// Get the button that opens the modal
-let btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
     }
 }
 

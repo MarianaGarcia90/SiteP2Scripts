@@ -1,14 +1,80 @@
-//Formatando data ex: 20 de janeiro de 2019"      
-function renderDataAtual() {
-	const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
-		"julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
-	const date = new Date();
-	let data = "Jundiaí, " + date.getDate() + " de " + month[date.getMonth()]
-		+ " de " + date.getFullYear();
-	document.write(data)
+/*
+	Arquivo destinado para funções que renderizam informações ou objetos
+	na tela ou atribuem eventos para removeção dessas.
+
+	Funções:
+	deleteContentOnMouseOut()
+	updateTotalInputCompras()
+	optionCheck()
+	renderSaboresBolos(i)
+	renderModelosBolos(i)
+	renderFooter()
+
+	Funções Auxiliar (não renderizam, porém formatam a informação)
+	formatCurrency(num)
+*/
+
+
+const content = document.getElementById("content");
+
+// Executada 
+function start() {
+	deleteContentOnMouseOut();
+	updateTotalInputCompras();
 }
 
-// Converte valores dos check e radios
+/**
+ * 
+ * @description
+ * Atribui evento mouseout aos elementos que apaga o conteúdo
+ * do content nas páginas de modelos e sabores
+ */
+function deleteContentOnMouseOut() {
+	try {
+		let article = document.getElementsByTagName("article");
+		for (let i = 0; i < article.length; i++) {
+			article[i].onmouseleave = function removerTexto() {
+				content.innerHTML = "";
+			};
+		}
+	} catch (error) { }
+}
+
+/**
+ * 
+ * @description
+ * Atribui evento change na seleção dos produtos
+ * é feito a somatória e inserido no Total A Pagar
+ */
+function updateTotalInputCompras() {
+	try {
+		const form = document.forms[0];
+		const inputs = form.querySelectorAll('input[type=checkbox],input[type=radio]');
+		// iterar todos os inputs
+		for (let i = 0; i < inputs.length; i++) {
+			// vincular função ao evento "change"
+			inputs[i].addEventListener('change', function () {
+				let soma = 0;
+				for (let j = 0; j < inputs.length; j++) {
+					if (inputs[j].checked) {
+						// interpreta como float, usando parseFloat ao invés de eval
+						soma += parseFloat(inputs[j].value);
+					}
+				}
+				form.hiddentotal.value = soma; // atribui valor ao campo oculto
+				form.total.value = formatCurrency(soma) // exibe valor formatado
+			}, false);
+		}
+	} catch (error) { }
+}
+
+/**
+ * 
+ * @param {float} num
+ * @description
+ * Formata o número para o padrão de moeda
+ * @returns {String} 
+ */
 function formatCurrency(num) {
 	num = num.toString().replace(/\$|\,/g, '');
 	if (isNaN(num)) num = "0";
@@ -20,29 +86,25 @@ function formatCurrency(num) {
 	return ("" + num + "," + cents);
 }
 
-// Somar valores bolos
-try {
-	const form = document.forms[0];
-	const inputs = form.querySelectorAll('input[type=checkbox],input[type=radio]');
-	// iterar todos os inputs
-	for (let i = 0; i < inputs.length; i++) {
-		// vincular função ao evento "change"
-		inputs[i].addEventListener('change', function () {
-			let soma = 0;
-			for (let j = 0; j < inputs.length; j++) {
-				if (inputs[j].checked) {
-					// interpreta como float, usando parseFloat ao invés de eval
-					soma += parseFloat(inputs[j].value);
-				}
-			}
-			form.hiddentotal.value = soma; // atribui valor ao campo oculto
-			form.total.value = formatCurrency(soma) // exibe valor formatado
-		}, false);
-	}
-} catch (error) { }
 
 /**
- * @description Exibe ou Oculta campo para entrada do pagamento em dinheiro
+ * 
+ * @description
+ * Renderiza na página a data atual e formatada
+ * Sendo chamada no final do arquivo
+ */
+function renderDataAtual() {
+	const month = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+		"julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+	const date = new Date();
+	let data = `<h3> Jundiaí, ${date.getDate()} de ${month[date.getMonth()]} de ${date.getFullYear()} </h3>`;
+	document.write(data)
+}
+
+/**
+ * 
+ * @description 
+ * Exibe ou Oculta campo para entrada do pagamento em dinheiro
  * @event onchange
  */
 function optionCheck() {
@@ -58,10 +120,15 @@ function optionCheck() {
 	}
 }
 
-
-// Função utilizada na pag ConheçaPeçaSabores.html
+/**
+ * 
+ * @param {Integer} i 
+ * @description 
+ * Renderiza frase de acordo com o índice do bolo
+ * @event onmouseover
+ */
 function renderSaboresBolos(i) {
-	let content = document.getElementById("content");
+
 	switch (i) {
 		case 1:
 			content.innerHTML = "<h2>Massa “dark chocolate” recheada de mousse de chocolate.</h2>";
@@ -106,7 +173,12 @@ function renderSaboresBolos(i) {
 	}
 }
 
-// Função utilizada na pag confiraModelos.html
+/**
+ * 
+ * @param {Integer} i 
+ * @description Renderiza frase de acordo com o índice do bolo
+ * @event onmouseover
+ */
 function renderModelosBolos(i) {
 	let content = document.getElementById("content");
 	switch (i) {
@@ -213,11 +285,14 @@ function renderModelosBolos(i) {
 	}
 }
 
-// Função utilizada em todas as páginas
-// Evita a necessidade de escrever múltiplas vezes o mesmo conteúdo
+/**
+ * @description 
+ * Renderiza o rodapé na tag footer, 
+ * emitindo um erro caso a mesmo não tenha sido encontrada.
+ */
 function renderFooter() {
 	let footer = document.getElementsByTagName("footer")[0];
-	if (footer != null) {
+	if (footer != null ) {
 		footer.innerHTML = `
 				<div class="conteudo ">
 					<p>&copy; 2019 - Mari's Wedding Cake - Seu bolo com carinho</p>
@@ -239,4 +314,6 @@ function renderFooter() {
 	}
 }
 
-renderFooter();	
+renderDataAtual();
+renderFooter();
+start();
