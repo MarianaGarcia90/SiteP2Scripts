@@ -41,6 +41,22 @@ try {
 	}
 } catch (error) { }
 
+/**
+ * @description Exibe ou Oculta campo para entrada do pagamento em dinheiro
+ * @event onchange
+ */
+function optionCheck() {
+	var option = document.getElementById("options").value;
+	if (option == "show") {
+		document.getElementById("hiddenDiv").style.visibility = "visible";
+	}
+	if (option == "hide") {
+		document.getElementById("hiddenDiv").style.visibility = "hidden";
+	}
+	if (option == "hide1") {
+		document.getElementById("hiddenDiv").style.visibility = "hidden";
+	}
+}
 
 
 // Função utilizada na pag ConheçaPeçaSabores.html

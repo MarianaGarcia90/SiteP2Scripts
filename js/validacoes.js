@@ -1,4 +1,16 @@
-// Pag Index
+/* 
+	Arquivo faz 
+*/
+
+
+
+/**
+ * 
+ * @param {form} formDados
+ * @description Valida o formulário da página de Compras
+ * @return bool - válido ou inválido
+ * @event onsubmit
+ */
 function enviarFormularioIndex(formDados) {
 	if (formDados.nome.value == "") {
 		alert("Digite um valor para o campo \"Nome\".");
@@ -21,7 +33,14 @@ function enviarFormularioIndex(formDados) {
 	return true;
 }
 
-// Pag Comprar
+/**
+ * 
+ * @param {form} formDados
+ * @description Envia e valida o formulário da página de Compras, verifica se 
+ * todos os campos estão preenchidos corretamente e se as entradas são válidas
+ * @return bool = válido : inválido
+ * @event onsubmit
+ */
 function enviarFormularioComprar(formDados) {
 	if (verificaCheckBoxSabores(formDados)) {
 		alert("O campo \"Sabores\" não está selecionado!\n\nPor favor selecione um item no campo \"Sabores\".")
@@ -70,25 +89,19 @@ function enviarFormularioComprar(formDados) {
 		formDados.pagamento.focus();
 		return false;
 	}
-	alert("Dados OK")
+
+	alert("Dados OK");
+	renderInfoPedidoPopUp(formDados);
 	return true;
 }
 
-// Mostra o campo do valor em dinheiro
-function optionCheck() {
-	var option = document.getElementById("options").value;
-	if (option == "show") {
-		document.getElementById("hiddenDiv").style.visibility = "visible";
-	}
-	if (option == "hide") {
-		document.getElementById("hiddenDiv").style.visibility = "hidden";
-	}
-	if (option == "hide1") {
-		document.getElementById("hiddenDiv").style.visibility = "hidden";
-	}
-}
 
-//Verifica elemento checado
+
+/**
+ * @param {form} formDados
+ * @description Verifica se no mínimo um checkbox foi selecionado
+ * @returns bool = checked : not checked 
+ */
 function verificaCheckBoxSabores(formDados) {
 	for (let i = 0; i < formDados.sabor.length; i++) {
 		const element = formDados.sabor[i];
@@ -99,13 +112,23 @@ function verificaCheckBoxSabores(formDados) {
 	return true;
 }
 
-//Verifica valor inserido no pagamento
+/**
+ * 
+ * @param {form} formDados
+ * @description Verifica se o valor em dinheiro inserido é um maior ou igual preço
+ * e faz o tratamento de erro caso receba letras
+ * @returns bool = válido : inválido
+ * 
+ */
 function verificaPagamentoDinheiro(formDados) {
-	// Feita multiplicação por 1000, pois o value é no formato de moeda
-	// e quando convertido fica 1,200 (decimal)
+	/* 
+		Feita multiplicação por 1000, pois o value é no formato de moeda
+	 	e quando convertido fica 1,200 (decimal)
+	*/
 	const totalPagar = parseFloat(formDados.total.value) * 1000;
 	const inputVisibility = document.querySelector("#hiddenDiv").style.visibility;
 	let valorPagamento;
+
 	if (inputVisibility != "hidden") {
 		try {
 			valorPagamento = parseFloat(formDados.valor.value);
@@ -113,18 +136,17 @@ function verificaPagamentoDinheiro(formDados) {
 			alert(error);
 			return true;
 		}
-		if (valorPagamento >= totalPagar) {
-			return false;
-		} else {
-			return true;
-		}
+		// Operador ternário
+		let valido = valor >= totalPagar ? true : false;
+		return valido;
+		/*
+			Mesma equivalência ao teste lógico superior
+			if (valorPagamento >= totalPagar) {
+				return false;
+			} else {
+				return true;
+			}
+		*/
 	}
 	return false;
-}
-
-//Calcular o troco ARRUMAR
-function calculaTroco() {
-	const troco = totalPagar - valorPagamento;
-	const dinheiroTroco = formatCurrency(troco);
-	return dinheiroTroco;
 }
