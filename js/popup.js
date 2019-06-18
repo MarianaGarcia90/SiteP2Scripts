@@ -101,8 +101,8 @@ function returnTroco(preco, pago) {
 function renderInfoPedidoPopUp() {
     const popupContent = document.querySelector(".modal-content");
     const info = parseURLParams(window.location.href); //função pra pegar os dados da url
-    
-    if (info != undefined && info.email != "") {
+    console.log(info);
+    if (info != undefined && info.verificador != "") {
         const pedido = Math.floor(Math.random() * 10000);
         let conteudo = `<h4>Senhor(a) ${info.nome} seu pedido foi enviado com sucesso.</h4>
                         <p>Pedido: ${pedido}</p>
