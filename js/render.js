@@ -1,7 +1,6 @@
 /*
 	Arquivo destinado para funções que renderizam informações ou objetos
 	na tela ou atribuem eventos para removeção dessas.
-
 	Funções:
 	deleteContentOnMouseOut()
 	updateTotalInputCompras()
@@ -57,7 +56,7 @@ function updateTotalInputCompras() {
 				let soma = 0;
 				for (let j = 0; j < inputs.length; j++) {
 					if (inputs[j].checked) {
-						// interpreta como float, usando parseFloat ao invés de eval
+						// interpreta como float, usando parseFloat
 						soma += parseFloat(inputs[j].value);
 					}
 				}
@@ -124,7 +123,7 @@ function optionCheck() {
  * 
  * @param {Integer} i 
  * @description 
- * Renderiza frase de acordo com o índice do bolo
+ * Renderiza frase de acordo com o índice(sabor) do bolo
  * @event onmouseover
  */
 function renderSaboresBolos(i) {
@@ -176,7 +175,7 @@ function renderSaboresBolos(i) {
 /**
  * 
  * @param {Integer} i 
- * @description Renderiza frase de acordo com o índice do bolo
+ * @description Renderiza frase de acordo com o índice(modelo) do bolo
  * @event onmouseover
  */
 function renderModelosBolos(i) {
