@@ -66,6 +66,14 @@
     .caixa6 {
         width: 100%;
     }
+
+    .caixa2 {
+        width: 24%;
+    }
+    
+    .caixa10 {
+        width: 75%;
+    }
 }
 
 @media screen and (max-width: 680px) {
@@ -80,6 +88,14 @@
     }
 
     .caixa6 {
+        width: 100%;
+    }
+
+    .caixa2 {
+        width: 100%;
+    }
+
+    .caixa10 {
         width: 100%;
     }
    
@@ -124,6 +140,14 @@
     }
 
     .caixa6 {
+        width: 100%;
+    }
+
+    .caixa2 {
+        width: 100%;
+    }
+
+    .caixa10 {
         width: 100%;
     }
 
