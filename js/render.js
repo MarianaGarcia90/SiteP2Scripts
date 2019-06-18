@@ -184,35 +184,19 @@ function renderModelosBolos(i) {
 		case 1:
 			content.innerHTML = `
 					<h2>
-						Ficam super chic quando misturados às outras tendências,
-						adicionando texturas e cor em camadas do bolo.
-					</h2>"`;
-			break;
-		case 2:
-			content.innerHTML = `
-					<h2>
 						Versáteis, elas dão o toque da estação do ano em que o casamento acontece.
 						Começaram a ser usadas nos naked cakes e estão ganhando cada vez mais 
 						destaque com cobertura cremosa ou pasta americana.
 					</h2>`;
 			break;
-		case 3:
+		case 2:
 			content.innerHTML = `
 					<h2>
 						Por serem super pessoais, únicos e com a cara dos noivos, 
 						os bolos escritos estão cada vez mais populares.
 					</h2>`;
 			break;
-		case 4:
-			content.innerHTML = `
-					<h2>
-						Pode parecer simples, mas babados são com certeza um dos 
-						projetos mais complicados para um decorador do bolo. 
-						Eles se assemelham às saias dos vestidos de noiva e dão ao bolo
-						de casamento uma aparência chic e elegante.
-					</h2>`;
-			break;
-		case 5:
+		case 3:
 			content.innerHTML = `
 					<h2>
 						É difícil errar quando se escolhe um bolo todo branco. 
@@ -221,14 +205,14 @@ function renderModelosBolos(i) {
 						cascatas de flores naturais ou de açúcar, babados, pintura ou cobertura cremosa. 
 					</h2>`;
 			break;
-		case 6:
+		case 4:
 			content.innerHTML = `
 					<h2>
 						As suculentas já começaram a ser usadas no decor de casamentos faz um certo tempo. 
 						Não demorou muito para que elas migrassem para os bolos para complementar o look do evento.
 					</h2>`;
 			break;
-		case 7:
+		case 5:
 			content.innerHTML = `
 					<h2>
 						Flores de açúcar para decorar bolos para casamento são um clássico atemporal. 
@@ -236,21 +220,14 @@ function renderModelosBolos(i) {
 						um bolo com flores naturais.
 					</h2>`;
 			break;
-		case 8:
-			content.innerHTML = `
-					<h2>
-						Mais e mais vemos coberturas cremosas em bolos para casamento. 
-						Ideal se vocês querem um tom mais descontraído e informal em sua festa.
-					</h2>`;
-			break;
-		case 9:
+		case 6:
 			content.innerHTML = `
 					<h2>
 						Um sucesso em artigos de papelaria para casamento, 
 						os metálicos trazem ao bolo o mesmo glamour hollywoodiano.
 					</h2>`;
 			break;
-		case 10:
+		case 7:
 			content.innerHTML = `
 					<h2>
 						No lugar de um só bolo em camadas, muitos casais estão optando por 
@@ -261,21 +238,12 @@ function renderModelosBolos(i) {
 						pois os bolos podem ter diferentes combinações. 
 					</h2>`;
 			break;
-		case 11:
+		case 8:
 			content.innerHTML = `
 					<h2>
 						Com certeza ninguém mais vai ter um bolo igual ao que você escolheu. 
 						Essa tendência começou com os bolos de chalkboard e seus desenhos 
 						que vão de monogramas à poemas bem rebuscados.
-					</h2>`;
-			break;
-		case 12:
-			content.innerHTML = `
-					<h2>
-						Não demorou muito para que a tendência de unhas, cabelos e passarelas 
-						chegasse também aos eventos sociais, principalmente os casamentos. 
-						A vantagem dos bolos ombré é poder abusar da paleta de cores do seu evento, 
-						mas tente limitar-se à 3 delas.
 					</h2>`;
 			break;
 		default:
