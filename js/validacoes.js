@@ -98,7 +98,7 @@ function enviarFormularioComprar(formDados) {
 		return false;
 	}
 
-	alert("Dados OK");
+	alert("Pedido feito!");
 	return true;
 }
 
