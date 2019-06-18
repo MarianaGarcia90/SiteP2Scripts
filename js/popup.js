@@ -18,7 +18,7 @@
 */
 const modal = document.getElementById("myModal");
 const btn = document.getElementById("myBtn");
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("close")[0]; //retorna array por isso [0]
 
 btn.onclick = function () {
     modal.style.display = "block";
@@ -36,7 +36,7 @@ window.onclick = function (event) {
  * 
  * @param {String} url
  * @description 
- * Recebe uma url com parâmetros recebbidos após o preenchimento do formulário.
+ * Recebe uma url com parâmetros recebidos após o preenchimento do formulário.
  * E atribui os mesmos num objeto, atributos são preenchido de acordo
  * com os valores presentes na url.
  * @returns {Object} com atributos contendo os valores dos parâmetros 
@@ -100,7 +100,7 @@ function returnTroco(preco, pago) {
  */
 function renderInfoPedidoPopUp() {
     const popupContent = document.querySelector(".modal-content");
-    const info = parseURLParams(window.location.href);
+    const info = parseURLParams(window.location.href); //função pra pegar os dados da url
     
     if (info != undefined && info.email != "") {
         const pedido = Math.floor(Math.random() * 10000);
