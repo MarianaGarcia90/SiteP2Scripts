@@ -97,7 +97,10 @@ function enviarFormularioComprar(formDados) {
 		formDados.pagamento.focus();
 		return false;
 	}
-
+	
+	if (!verificaCheckBoxSabores(formDados) && modeloOk) {
+		formDados.verificador.value = 1;
+	}
 	alert("Pedido feito!");
 	return true;
 }
