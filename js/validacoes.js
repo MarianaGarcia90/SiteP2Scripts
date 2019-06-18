@@ -1,7 +1,6 @@
 /*
 	Arquivo faz toda parte de validação dos formulários
 	possuindo assim também funções auxiliares
-
 	Funções Principais:
 	enviarFormularioIndex(formDados)
 	enviarFormularioComprar(formDados)
@@ -33,7 +32,7 @@ function enviarFormularioIndex(formDados) {
 	}
 
 	if (formDados.mensagem.value == "") {
-		alert("Digite um valor para o campo \"Mensagem\".");
+		alert("Digite uma mensagem válida no campo \"Mensagem\".");
 		formDados.mensagem.focus();
 		return false;
 	}
