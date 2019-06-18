@@ -2,7 +2,6 @@
  * 
  *  Arquivo responsável pelo popup contém funções necessárias para exibir o popup 
  *  e preenche-lo com as informações. Apenas utilizado na página: compras
- *
  *  Funções presentes:
  *  parseURLParams(url)
  *  returnDataAtual()
@@ -37,9 +36,9 @@ window.onclick = function (event) {
  * 
  * @param {String} url
  * @description 
- * Recebe uma url com parâmetros recidos após o preenchimento do formulário.
- * E atribui os mesmo num objeto, atributos são preenchido de acordo
- *  com os valores presentes na url.
+ * Recebe uma url com parâmetros recebbidos após o preenchimento do formulário.
+ * E atribui os mesmos num objeto, atributos são preenchido de acordo
+ * com os valores presentes na url.
  * @returns {Object} com atributos contendo os valores dos parâmetros 
  */
 function parseURLParams(url) {
