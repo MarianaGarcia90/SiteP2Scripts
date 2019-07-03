@@ -8,5 +8,9 @@ Nas páginas de descrição dos modelos e sabores o usuário pode escolher compr
 
 Visual Code - sendo utilizado somente HTML5, CSS e Javascript.
 
+## O site
+
+https://marianagarcia90.github.io/SiteP2Scripts/
+
 
 
